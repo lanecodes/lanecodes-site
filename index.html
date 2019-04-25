@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>  
+    <meta charset="utf-8">
+    <title>Andrew Lane</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	      crossorigin="anonymous">    
+    <script>
+      var niceQuotes = [
+        { 
+          text: "To me programming is more than an important practical art. It "
+                  + " is also a gigantic undertaking in the foundations of "
+                  + "knowledge.",
+          author: "David Sayre",
+          sourceUrl: "https://en.wikiquote.org/wiki/Grace_Hopper"
+        },
+        { 
+          text: "The trouble with computers is you <em>play</em> with them.",
+          author: "Richard Feynman",
+          sourceUrl: "https://www.goodreads.com/book/show/5544.Surely_You_re_Joking_Mr_Feynman_"
+        }
+      ];
+
+      function getRandomQuote(quoteList) {
+        return quoteList[Math.floor(Math.random() * quoteList.length)];
+      }
+
+      function refreshQuote(newQuote) {
+        document.getElementById("quote-text").innerHTML = "\"" + newQuote.text + "\"";
+        
+        var authorLink = document.createElement("a");
+        authorLink.setAttribute("href", newQuote.sourceUrl);
+        authorLink.setAttribute("target", "_blank");
+        authorLink.innerHTML = newQuote.author;
+        
+        oldAuthorLink = document.getElementById("quote-author").childNodes[1];
+        oldAuthorLink.parentNode.replaceChild(authorLink, oldAuthorLink);
+      }
+
+      function copyrightDeclaration(name, startYear) {
+	      var thisYear = new Date().getFullYear();
+	      if (thisYear > startYear) {
+	        return "© " + name + " " + startYear + "-" + thisYear;
+	      } else {
+	        return "© " + name + " " + startYear;
+	      }
+      }
+
+      function setCopyrightDeclaration(copyrightText) {
+        document.getElementById("copyright").innerHTML = copyrightText;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Andrew Lane</h1>
+    <div class="nice-quote">
+      <span id="quote-text"></span>
+      <span id="quote-author">— <a></a></span>
+    </div>    
+    <div class="container">
+      <div id="contact-links">
+        <nav class="left">
+          <ul class="list-inline">
+            <li>
+              <a href="http://twitter.com/alanescience" target="_blank" >
+                Twitter
+                <span class="fa-stack fa-2x">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:andrew@lanecodes.com" target="_blank" >
+                Contact
+                <span class="fa-stack fa-2x">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <nav class="right">
+          <ul class="list-inline">
+            <li>
+              <a href="http://github.com/lanecodes" target="_blank" >
+                GitHub
+                <span class="fa-stack fa-2x">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.kcl.ac.uk/people/andrew-lane" target="_blank" >
+                Research
+                <span class="fa-stack fa-2x">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-flask fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div id="copyright"></div>
+    </div>
+    <script>
+      refreshQuote(getRandomQuote(niceQuotes));
+      setCopyrightDeclaration(copyrightDeclaration("Andrew Lane", 2019));
+    </script>
+  </body>
+</html>
